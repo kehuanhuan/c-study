@@ -12,4 +12,5 @@ int main(void)
     printf("the mul : %d\n", mul(a, SUM));
     printf("the div : %d\n", div(a, SUM));
     return 0;
+
 }

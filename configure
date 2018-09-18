@@ -1,0 +1,7 @@
+#!/bin/bash
+
+bin=bin
+lib=lib
+
+mkdir $bin 
+mkdir $lib
