@@ -1,5 +1,7 @@
 lib/*
 bin/*
 .deps
+*.o
+*.so
 
 

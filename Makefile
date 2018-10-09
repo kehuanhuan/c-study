@@ -1,6 +1,6 @@
 CC=gcc
 bin=bin
-rpath=/var/code/c-study/
+rpath=`pwd`
 
 all: edit
 
@@ -19,7 +19,7 @@ clean-all :
 	rm *.o *.so $(bin)/edit
 
 clean :
-	rm *.o *.so
+	rm *.o 
 
 .PHONY: edit clean
 
