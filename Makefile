@@ -4,19 +4,15 @@ rpath=`pwd`
 
 all: edit
 
-edit : main.o add.o sub.o libtest.so
-	$(CC) -o $(bin)/edit add.o sub.o main.o -L. -ltest -Wl,-rpath=$(rpath)
-libtest.so : src/div.c src/mul.c src/tools/functions.c
-	$(CC) src/div.c src/mul.c src/tools/functions.c -fPIC -shared -o libtest.so
+edit : main.o functions.o
+	$(CC) -o $(bin)/edit main.o functions.o
 main.o : main.c
 	$(CC) -c main.c
-add.o : src/add.c
-	$(CC) -c src/add.c
-sub.o : src/sub.c
-	$(CC) -c src/sub.c
+functions.o : src/tools/functions.c
+	$(CC) -c src/tools/functions.c
 
 clean-all :
-	rm *.o *.so $(bin)/edit
+	rm *.o $(bin)/edit
 
 clean :
 	rm *.o
