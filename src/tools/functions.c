@@ -37,3 +37,4 @@ char *get_local_ip(void)
 
     return inet_ntoa(((struct sockaddr_in*)(&buf[intr].ifr_addr))-> sin_addr);
 }
+
