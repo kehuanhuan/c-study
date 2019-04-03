@@ -10,11 +10,8 @@ hello : main.c libkhhfuns.so
 libkhhfuns.so : src/tools/functions.c
 	$(CC) -fPIC -shared src/tools/functions.c -o $(lib)/libkhhfuns.so
 
-clean-all :
-	rm -rf *.o $(bin) $(lib) /usr/lib/libkhhfuns.so
-
 clean :
-	rm /usr/lib/libkhhfuns.so $(lib)/*
+	rm -rf *.o $(bin) $(lib) /usr/lib/libkhhfuns.so
 
 install :
 	cp $(lib)/libkhhfuns.so /usr/lib/
