@@ -4,4 +4,4 @@
 
  - ./configure
  - make
- - make clean
+ - make install
