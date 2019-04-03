@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <netdb.h>
 #include <net/if.h>
+#include <stdio.h>
 #include <arpa/inet.h>
 
 #define ERRORIP "cannot find host ip"
@@ -36,5 +37,18 @@ char *get_local_ip(void)
     }
 
     return inet_ntoa(((struct sockaddr_in*)(&buf[intr].ifr_addr))-> sin_addr);
+}
+
+void change(int *a, int *b)
+{
+    int tmp;
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+char whoaim()
+{
+    printf("I am a dynamc lib\n");
 }
 

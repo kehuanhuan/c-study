@@ -1,1 +1,0 @@
-extern char *get_local_ip();  //除法函数的声明

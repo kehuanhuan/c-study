@@ -1,21 +1,23 @@
 CC=gcc
 bin=bin
+lib=lib
 rpath=`pwd`
 
-all: edit
+all: hello
 
-edit : main.o functions.o
-	$(CC) -o $(bin)/edit main.o functions.o
-main.o : main.c
-	$(CC) -c main.c
-functions.o : src/tools/functions.c
-	$(CC) -c src/tools/functions.c
+hello : main.c libkhhfuns.so
+	$(CC) main.c -L./lib/ -lkhhfuns -o $(bin)/hello
+libkhhfuns.so : src/tools/functions.c
+	$(CC) -fPIC -shared src/tools/functions.c -o $(lib)/libkhhfuns.so
 
 clean-all :
-	rm *.o $(bin)/edit
+	rm -rf *.o $(bin) $(lib) /usr/lib/libkhhfuns.so
 
 clean :
-	rm *.o
+	rm /usr/lib/libkhhfuns.so $(lib)/*
+
+install :
+	cp $(lib)/libkhhfuns.so /usr/lib/
 
 .PHONY: edit clean
 
