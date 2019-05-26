@@ -6,7 +6,7 @@ int main(void)
     int a = 8;
     int b = 9;
     printf("a origin value is %d\n", a);
-    change(&a, &b);
+    switchAtoB(&a, &b);
     printf("a now value is %d\n", a);
 
     struct Book bk1;
@@ -19,8 +19,3 @@ int main(void)
     return 0;
 }
 
-void printBook(struct Book *book)
-{
-    printf("Book title is %s\n", book->title);
-    printf("Book pages is %d\n", book->pages);
-}
