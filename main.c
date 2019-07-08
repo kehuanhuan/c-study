@@ -6,6 +6,8 @@ int main(void)
 
     printPageSize();
 
+    firstA();
+
     return 0;
 }
 
