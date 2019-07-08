@@ -52,5 +52,17 @@ char whoaim()
     printf("I am a dynamc lib\n");
 }
 
+int testMalloc()
+{
+    char *str;
+
+    while (1) {
+        sleep(2);
+        str = (char *) malloc(100000);
+        printf("malloc size is %d\n", sizeof(str));
+    }
+    return sizeof(str);
+}
+
 
 

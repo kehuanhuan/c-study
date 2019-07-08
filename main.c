@@ -16,6 +16,8 @@ int main(void)
 
     printBook(&bk1);
 
+    testMalloc();
+
     return 0;
 }
 
