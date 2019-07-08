@@ -4,6 +4,7 @@
 #include <netdb.h>
 #include <net/if.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <arpa/inet.h>
 #include "../../include/functions.h"
 
@@ -57,6 +58,12 @@ void printBook(struct Book *book)
 {
     printf("Book title is %s\n", book->title);
     printf("Book pages is %d\n", book->pages);
+}
+
+
+void printPageSize()
+{
+    printf("page-size: %ld\n",sysconf(_SC_PAGESIZE));
 }
 
 
