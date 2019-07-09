@@ -1,22 +1,36 @@
 #include <stdio.h>
+
+#include<stdlib.h>
+#include<sys/types.h>
+#include <errno.h>
+#include<sys/stat.h>
+
+#include<fcntl.h>
+
 #include "src/algorithms/algorithms.h"
 #include "src/tools/functions.h"
+#include "src/process/deamon.h"
 
 #define BUF_SIZE 10
+extern int errno ;
 
 int main(void)
 {
-    int n;
-    int array[BUF_SIZE] = {12,85,25,16,34,23,49,95,17,61};
-    int maxlen = BUF_SIZE;
+    freopen("deamon.log", "a", stderr);
+    mydaemon(1, 1);
 
-    printf("排序前的数组\n");
-    display(array, maxlen);
-
-    quicksort(array, maxlen, 0, maxlen-1);  // 快速排序
-
-    printf("排序后的数组\n");
-    display(array, maxlen);
+    FILE * pf;
+    int errnum;
+    pf = fopen ("unexist.txt", "rb");
+    if (pf == NULL)
+    {
+      errnum = errno;
+      perror("通过 perror 输出错误");
+     }
+     else
+     {
+        fclose (pf);
+     }
 
     return 0;
 
