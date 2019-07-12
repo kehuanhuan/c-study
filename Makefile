@@ -1,7 +1,6 @@
 CC=gcc
 bin=bin
 lib=lib
-rpath=`pwd`
 
 all: hello
 
@@ -15,6 +14,9 @@ clean :
 
 install :
 	cp $(lib)/libkhhfuns.so /usr/lib/
+
+test :
+	$(bin)/hello
 
 .PHONY: edit clean
 

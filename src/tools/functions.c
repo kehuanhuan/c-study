@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
 /********************************
  *函数名：swap
@@ -34,6 +36,21 @@ void display(int array[], int maxlen)
     printf("\n");
 
     return ;
+}
+
+/*
+*字符串拼接
+*/
+char* strJoin(char *s1, char *s2)
+{
+    char *result = malloc(strlen(s1)+strlen(s2)+1);//+1 for the zero-terminator
+    //in real code you would check for errors in malloc here
+    if (result == NULL) exit (1);
+
+    strcpy(result, s1);
+    strcat(result, s2);
+
+    return result;
 }
 
 
