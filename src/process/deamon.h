@@ -1,1 +1,1 @@
-extern void mydaemon(int ischdir,int isclose);
+extern void mydaemon(int ischdir,int isclose, int pronum);

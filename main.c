@@ -17,7 +17,7 @@ extern int errno ;
 int main(void)
 {
     freopen("deamon.log", "a", stderr);
-    mydaemon(1, 1);
+    mydaemon(0, 1, 2);
 
     FILE * pf;
     int errnum;
@@ -30,6 +30,10 @@ int main(void)
      else
      {
         fclose (pf);
+     }
+
+     while (1) {
+        sleep(10);
      }
 
     return 0;
