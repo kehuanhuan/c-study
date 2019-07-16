@@ -28,6 +28,9 @@ int main(void)
     len = strlen(ctime(&timebuf));
     buf = malloc(len+1);
     // 子进程主要工作，每10秒钟向日志文件写入当前的时间
+    char *a;
+
+    int n =1000;
     while(1)
     {
         if((fd = open("/var/log/mydaemon.log", O_CREAT | O_WRONLY | O_APPEND,0600)) < 0){
@@ -39,9 +42,17 @@ int main(void)
         strncpy(buf,ctime(&timebuf),len+1);
         write(fd, buf, len+1);
         close(fd);
-        sleep(10);
+        sleep(1);
+
+        a = (char *)malloc(1024*n*sizeof(char));
+
+        for (int j = 0; j < n; ++j)
+        {
+            a[j*1024] = 1;
+        }
+
     }
-    free(buf);
+    // free(buf);
     exit(EXIT_SUCCESS);
 
     return 0;
