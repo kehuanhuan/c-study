@@ -12,9 +12,7 @@
 void mydaemon(int ischdir,int isclose, int pronum)
 {
     pid_t pid, sid;
-    time_t timebuf;
-    int  fd, len;
-    char *buf;
+
     // 创建子进程，然后父进程退出
     pid = fork();
     if(pid < 0){
@@ -45,30 +43,11 @@ void mydaemon(int ischdir,int isclose, int pronum)
             i = pronum;
         }
     }
-
     // 改变目录文件的创建模式
     umask(0);
     // 关闭不必要的文件描述符
     close(STDIN_FILENO);
     close(STDOUT_FILENO);
     close(STDERR_FILENO);
-    // malloc buf
-    len = strlen(ctime(&timebuf));
-    buf = malloc(len+1);
-    // 子进程主要工作，每10秒钟向日志文件写入当前的时间
-    while(1)
-    {
-        if((fd = open("/var/log/mydaemon.log", O_CREAT | O_WRONLY | O_APPEND,0600)) < 0){
-            perror("open file");
-            exit(EXIT_FAILURE);
-        }
-        time(&timebuf);
-        bzero(buf, len+1);
-        strncpy(buf,ctime(&timebuf),len+1);
-        write(fd, buf, len+1);
-        close(fd);
-        sleep(10);
-    }
-    free(buf);
-    exit(EXIT_SUCCESS);
+
 }
