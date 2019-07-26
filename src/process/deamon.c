@@ -46,10 +46,12 @@ void mydaemon(int ischdir,int isclose, int pronum)
     // 改变目录文件的创建模式
     umask(0);
 
+    if (isclose)
+    {
         // 关闭不必要的文件描述符
         close(STDIN_FILENO);
         close(STDOUT_FILENO);
         close(STDERR_FILENO);
-
+    }
 
 }

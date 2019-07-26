@@ -18,41 +18,34 @@ extern int errno ;
 
 int main(void)
 {
-    time_t timebuf;
-    int  fd, len;
-    char *buf;
+    // freopen("deamon.log", "a", stderr);
+    // mydaemon(0, 0, 0);
 
-    freopen("deamon.log", "a", stderr);
-    mydaemon(0, 1, 2);
-    // malloc buf
-    len = strlen(ctime(&timebuf));
-    buf = malloc(len+1);
-    // 子进程主要工作，每10秒钟向日志文件写入当前的时间
     char *a;
-
     int n =1000;
+
+    int b;
+
+    a = "中国ffff";
+
+    b = a;
+
+    printf("%p\n", b);
+    printf("%s\n", a);
+
     while(1)
     {
-        if((fd = open("/var/log/mydaemon.log", O_CREAT | O_WRONLY | O_APPEND,0600)) < 0){
-            perror("open file");
-            exit(EXIT_FAILURE);
-        }
-        time(&timebuf);
-        bzero(buf, len+1);
-        strncpy(buf,ctime(&timebuf),len+1);
-        write(fd, buf, len+1);
-        close(fd);
         sleep(1);
 
-        a = (char *)malloc(1024*n*sizeof(char));
+        a = malloc(1024*n*sizeof(char));
 
         for (int j = 0; j < n; ++j)
         {
-            a[j*1024] = 1;
+            a[j*1024] = 'a';
         }
 
     }
-    // free(buf);
+
     exit(EXIT_SUCCESS);
 
     return 0;
