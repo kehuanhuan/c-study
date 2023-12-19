@@ -18,36 +18,24 @@ extern int errno ;
 
 int main(void)
 {
-    // freopen("deamon.log", "a", stderr);
-    // mydaemon(0, 0, 0);
 
-    char *a;
-    int n =1000;
+  int[] a = [3,6,6,6,6,5,5,5,1,6];
 
-    int b;
+  int i = 0;
+  int j = 0;
 
-    a = "中国ffff";
+  for (int i = 0; i < 10; ++i)
+  {
+     for (int j = 1; j < 9; ++j)
+     {
+         if (a[i] < a[j])
+         {
+             swap(a[i], a[j]);
+         }
+     }
+  }
 
-    b = a;
-
-    printf("%p\n", b);
-    printf("%s\n", a);
-
-    while(1)
-    {
-        sleep(1);
-
-        a = malloc(1024*n*sizeof(char));
-
-        for (int j = 0; j < n; ++j)
-        {
-            a[j*1024] = 'a';
-        }
-
-    }
-
-    exit(EXIT_SUCCESS);
-
-    return 0;
+printf("%d\n", a[7]);
 
 }
+

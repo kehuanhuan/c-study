@@ -1,0 +1,11 @@
+version: '2.0'
+
+services:
+
+   ubuntu:
+     image: ubuntu:16.04
+     tty: true
+     volumes:
+      - ./:/tmp
+
+

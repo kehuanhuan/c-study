@@ -10,7 +10,7 @@ libkhhfuns.so : src/tools/functions.c src/algorithms/quick_sort.c src/process/de
 	$(CC) -fPIC -shared src/tools/functions.c src/algorithms/quick_sort.c src/process/deamon.c -o $(lib)/libkhhfuns.so
 
 clean :
-	rm -rf *.o $(bin) $(lib) /usr/lib/libkhhfuns.so
+	rm -rf *.o $(bin) $(lib) /usr/lib/libkhhfuns.so a.out
 
 install :
 	cp $(lib)/libkhhfuns.so /usr/lib/
